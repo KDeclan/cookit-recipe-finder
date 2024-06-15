@@ -1,0 +1,167 @@
+body {
+  overflow-x: hidden;
+}
+
+#input-row {
+  display: flex;
+}
+
+#keyword-search {
+  margin-top: 0.5em;
+  border-radius: 0.5em;
+}
+
+.filter-display-container {
+  padding: 20px;
+  text-align: center;
+  height: 23%;
+  padding-top: 1em;
+  overflow-y: auto;
+  border-bottom: 0.1em solid black;
+}
+
+.input-row {
+  display: flex;
+  align-items: center;
+}
+
+.input-row input {
+  margin-right: 0.3em;
+}
+
+.add-bttn {
+  margin-top: 1.2em;
+  background-color: #e67854;
+  border-radius: 0.5em;
+  padding: 0.2em;
+}
+
+.add-bttn:hover {
+  cursor: pointer;
+}
+
+.icon {
+  position: absolute;
+  top: 0.5em;
+  left: 0.7em; /* Adjust the spacing from the left edge */
+}
+
+.icon:hover {
+  cursor: pointer;
+}
+
+.filters {
+  display: flex;
+  gap: 1em;
+  flex-wrap: wrap;
+  margin-top: 0.3em;
+  padding: 0 5em;
+}
+
+.filter {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex: 1 0 21%; /* Adjust the percentage to control the width */
+  box-sizing: border-box;
+  text-align: center;
+  background-color: #e67854;
+  color: aliceblue;
+  border-radius: 0.5em;
+  position: relative; /* To position the icon absolutely */
+  padding: 0.2em 0;
+  cursor: pointer; /* Add cursor pointer for interactive elements */
+  user-select: none;
+}
+
+.calorie-filter {
+  display: flex;
+  align-items: center;
+  margin-top: 1em;
+}
+
+#calorie-input {
+  border-radius: 0.5em;
+  margin-right: 0.5em;
+}
+
+#calorie-add-bttn {
+  margin-left: 0.3em;
+}
+
+.search-display-container {
+  padding: 20px;
+  text-align: center;
+  height: 19%;
+  padding-top: 0.2em;
+  overflow-y: auto;
+  border-bottom: 0.1em solid black;
+}
+
+#selected-filters {
+  height: 80%;
+  overflow-y: auto;
+}
+
+.search-bttn {
+  background-color: green;
+  border-radius: 0.5em;
+  width: 15%;
+  margin: auto auto;
+}
+
+.search-bttn:hover {
+  cursor: pointer;
+}
+
+.recipes-display {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5em;
+  width: 100%;
+  padding: 20px;
+  overflow-y: auto;
+  max-height: 80vh;
+}
+
+.recipe {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 13em;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #ece4e4;
+  text-align: center;
+}
+
+.recipe img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.3em;
+}
+
+.recipe p {
+  margin: 0.2em 0;
+  font-size: 0.8rem;
+}
+
+.recipe a {
+  color: #e67854;
+  text-decoration: none;
+}
+
+#recipe-stats {
+  display: flex;
+  flex-direction: row;
+  gap: 0.3em;
+}
+
+#recipe-label {
+  font-size: 1rem;
+}

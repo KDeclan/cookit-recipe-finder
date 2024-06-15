@@ -1,0 +1,20 @@
+#top-container {
+  text-wrap: nowrap;
+  border-right: 0.1em solid black;
+}
+
+#sidebar-header {
+  margin-top: 0.3em;
+}
+
+.sidebar-bttns:hover {
+  cursor: pointer;
+  background-color: white;
+  width: 107%;
+  text-align: center;
+  border-radius: 0.5em;
+}
+
+.container h3.sidebar-bttns:last-of-type {
+  margin-bottom: 1.5em;
+}
