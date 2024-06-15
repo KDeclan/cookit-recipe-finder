@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/cookit-recipe-finder/static/css/main.e72ddfc8.css",
+    "main.js": "/cookit-recipe-finder/static/js/main.a3384793.js",
+    "index.html": "/cookit-recipe-finder/index.html",
+    "main.e72ddfc8.css.map": "/cookit-recipe-finder/static/css/main.e72ddfc8.css.map",
+    "main.a3384793.js.map": "/cookit-recipe-finder/static/js/main.a3384793.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e72ddfc8.css",
+    "static/js/main.a3384793.js"
+  ]
+}
