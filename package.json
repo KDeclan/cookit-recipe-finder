@@ -1,6 +1,7 @@
 {
   "name": "cookit-reciper-finder",
   "version": "0.1.0",
+  "author": "Declan",
   "private": true,
   "homepage": "https://kdeclan.github.io/cookit-recipe-finder",
   "dependencies": {
