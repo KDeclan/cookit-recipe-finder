@@ -192,6 +192,9 @@ const FilterDisplay = ({ currentFilter }) => {
               >
                 View Recipe
               </a>
+              <p className="cookbook-add-bttn">
+                <IoIosAdd color="white" />
+              </p>
             </div>
           ))
         ) : (

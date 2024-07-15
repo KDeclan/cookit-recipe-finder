@@ -36,6 +36,13 @@ body {
   padding: 0.2em;
 }
 
+.cookbook-add-bttn {
+  margin-top: 1.2em;
+  background-color: green;
+  border-radius: 0.5em;
+  padding: 0.2em;
+}
+
 .add-bttn:hover {
   cursor: pointer;
 }
