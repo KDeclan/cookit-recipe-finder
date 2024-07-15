@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./FilterDisplay.css";
 import { IoIosAdd, IoIosCheckmark, IoIosSearch } from "react-icons/io";
-import { fetchRecipes } from "../../services/api"; // Corrected import path
+import { fetchRecipes } from "../../services/api";
 
 const FilterDisplay = ({ currentFilter }) => {
   const [filters, setFilters] = useState({
@@ -12,7 +12,8 @@ const FilterDisplay = ({ currentFilter }) => {
     nutrients: [],
   });
 
-  const [recipes, setRecipes] = useState([]); // State to store fetched recipes
+  const [recipes, setRecipes] = useState([]);
+  const [cookbook, setCookbook] = useState([]);
 
   const addSearch = () => {
     const keywordInput = document.getElementById("keyword-search");
@@ -35,6 +36,11 @@ const FilterDisplay = ({ currentFilter }) => {
       calorieInput.value = "";
       alert("Input has been added!");
     }
+  };
+
+  const addCookBook = (recipe) => {
+    setCookbook((prevCookbook) => [...prevCookbook, recipe]);
+    alert("Recipe has been added to your cookbook!");
   };
 
   const handleSelection = (filter, category) => {
@@ -123,6 +129,43 @@ const FilterDisplay = ({ currentFilter }) => {
             </p>
           </div>
         );
+      case "CookBook":
+        //when a recipe is added to the cookbook it will appear here
+        return (
+          <div className="cookbook-display">
+            {cookbook.map((recipe, index) => (
+              <div key={index} className="recipe">
+                <p id="recipe-label">{recipe.label}</p>
+                <img
+                  src={recipe.image}
+                  alt={recipe.label}
+                  height={150}
+                  width={125}
+                />
+                <div className="recipe-stats">
+                  <p>
+                    <strong>Cal</strong> {recipe.calories.toFixed(2)}
+                  </p>
+                  <p>
+                    <strong>Fat</strong>{" "}
+                    {recipe.totalNutrients.FAT.quantity.toFixed(2)}
+                  </p>
+                  <p>
+                    <strong>Pro</strong>{" "}
+                    {recipe.totalNutrients.PROCNT.quantity.toFixed(2)}
+                  </p>
+                  <p>
+                    <strong>Carb</strong>{" "}
+                    {recipe.totalNutrients.CHOCDF.quantity.toFixed(2)}
+                  </p>
+                </div>
+                <a href={recipe.url} target="_blank" rel="noopener noreferrer">
+                  View Recipe
+                </a>
+              </div>
+            ))}
+          </div>
+        );
       default:
         return null;
     }
@@ -133,7 +176,6 @@ const FilterDisplay = ({ currentFilter }) => {
       const data = await fetchRecipes(filters);
       setRecipes(data.hits);
       console.log(data);
-      // Display recipes on your website
     } catch (error) {
       console.error("Error fetching recipes:", error);
     }
@@ -168,7 +210,7 @@ const FilterDisplay = ({ currentFilter }) => {
                 height={150}
                 width={125}
               />
-              <div id="recipe-stats">
+              <div className="recipe-stats">
                 <p>
                   <strong>Cal</strong> {hit.recipe.calories.toFixed(2)}
                 </p>
@@ -192,8 +234,9 @@ const FilterDisplay = ({ currentFilter }) => {
               >
                 View Recipe
               </a>
-              <p className="cookbook-add-bttn">
+              <p id="cookbook-add-bttn" onClick={() => addCookBook(hit.recipe)}>
                 <IoIosAdd color="white" />
+                Add to cookbook
               </p>
             </div>
           ))

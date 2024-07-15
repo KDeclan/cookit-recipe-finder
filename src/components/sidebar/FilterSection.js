@@ -27,6 +27,10 @@ const FilterSection = ({ onFilterChange }) => {
         Calories
         <IoIosArrowForward />
       </h3>
+      <h3 className="sidebar-bttns" onClick={() => onFilterChange("CookBook")}>
+        CookBook
+        <IoIosArrowForward />
+      </h3>
     </div>
   );
 };
