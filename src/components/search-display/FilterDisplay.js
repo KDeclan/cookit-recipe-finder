@@ -39,8 +39,12 @@ const FilterDisplay = ({ currentFilter }) => {
   };
 
   const addCookBook = (recipe) => {
-    setCookbook((prevCookbook) => [...prevCookbook, recipe]);
-    alert("Recipe has been added to your cookbook!");
+    if (cookbook.some((savedRecipe) => savedRecipe.label === recipe.label)) {
+      alert("Recipe is already saved!");
+    } else {
+      setCookbook((prevCookbook) => [...prevCookbook, recipe]);
+      alert("Recipe has been added to your cookbook!");
+    }
   };
 
   const handleSelection = (filter, category) => {
