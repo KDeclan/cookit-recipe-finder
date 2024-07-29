@@ -64,6 +64,11 @@ body {
   cursor: pointer;
 }
 
+#remove-cookbook:hover {
+  cursor: pointer;
+  color: red;
+}
+
 .icon {
   position: absolute;
   top: 0.5em;

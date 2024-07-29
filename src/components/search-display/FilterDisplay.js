@@ -1,6 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./FilterDisplay.css";
-import { IoIosAdd, IoIosCheckmark, IoIosSearch } from "react-icons/io";
+import {
+  IoIosAdd,
+  IoIosCheckmark,
+  IoIosSearch,
+  IoIosCloseCircle,
+} from "react-icons/io";
 import { fetchRecipes } from "../../services/api";
 
 const FilterDisplay = ({ currentFilter }) => {
@@ -17,11 +22,18 @@ const FilterDisplay = ({ currentFilter }) => {
   const [keywordInput, setKeywordInput] = useState("");
   const [calorieInput, setCalorieInput] = useState("");
 
+  useEffect(() => {
+    const savedCookbook = localStorage.getItem("cookbook");
+    if (savedCookbook) {
+      setCookbook(JSON.parse(savedCookbook));
+    }
+  }, []);
+
   const addSearch = () => {
     if (keywordInput) {
       setFilters((prevFilters) => ({
         ...prevFilters,
-        keyword: [...prevFilters.keyword, keywordInput], // Add new keyword to the list
+        keyword: [...prevFilters.keyword, keywordInput],
       }));
       setKeywordInput("");
       alert("Keyword has been added!");
@@ -41,8 +53,24 @@ const FilterDisplay = ({ currentFilter }) => {
     if (cookbook.some((savedRecipe) => savedRecipe.label === recipe.label)) {
       alert("Recipe is already saved!");
     } else {
-      setCookbook((prevCookbook) => [...prevCookbook, recipe]);
+      setCookbook((prevCookbook) => {
+        const updatedCookbook = [...prevCookbook, recipe];
+        localStorage.setItem("cookbook", JSON.stringify(updatedCookbook));
+        return updatedCookbook;
+      });
       alert("Recipe has been added to your cookbook!");
+    }
+  };
+
+  const removeCookBook = (recipe) => {
+    const index = cookbook.findIndex((item) => item.label === recipe.label);
+
+    if (index !== -1) {
+      const updatedCookbook = [...cookbook];
+      updatedCookbook.splice(index, 1);
+      setCookbook(updatedCookbook);
+      localStorage.setItem("cookbook", JSON.stringify(updatedCookbook));
+      alert("Recipe has been removed from cookbook!");
     }
   };
 
@@ -136,6 +164,7 @@ const FilterDisplay = ({ currentFilter }) => {
         );
       case "CookBook":
         //when a recipe is added to the cookbook it will appear here
+        //todo: save to localStorage so saved recipes persist
         return (
           <div className="cookbook-display">
             {cookbook.map((recipe, index) => (
@@ -167,6 +196,12 @@ const FilterDisplay = ({ currentFilter }) => {
                 <a href={recipe.url} target="_blank" rel="noopener noreferrer">
                   View Recipe
                 </a>
+                <div
+                  id="remove-cookbook"
+                  onClick={() => removeCookBook(recipe)}
+                >
+                  <IoIosCloseCircle />
+                </div>
               </div>
             ))}
           </div>
