@@ -122,7 +122,7 @@ body {
 }
 
 .search-display-container {
-  padding: 20px;
+  padding: 1em;
   text-align: center;
   height: 19%;
   padding-top: 0.2em;
@@ -131,8 +131,12 @@ body {
 }
 
 #selected-filters {
+  display: flex;
   height: 80%;
+  align-items: center;
+  justify-content: center;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .search-bttn {
