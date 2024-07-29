@@ -14,27 +14,26 @@ const FilterDisplay = ({ currentFilter }) => {
 
   const [recipes, setRecipes] = useState([]);
   const [cookbook, setCookbook] = useState([]);
+  const [keywordInput, setKeywordInput] = useState("");
+  const [calorieInput, setCalorieInput] = useState("");
 
   const addSearch = () => {
-    const keywordInput = document.getElementById("keyword-search");
-    const calorieInput = document.getElementById("calorie-input");
-
-    if (keywordInput && keywordInput.value) {
+    if (keywordInput) {
       setFilters((prevFilters) => ({
         ...prevFilters,
-        keyword: [...prevFilters.keyword, keywordInput.value],
+        keyword: [...prevFilters.keyword, keywordInput], // Add new keyword to the list
       }));
-      keywordInput.value = "";
-      alert("Input has been added!");
+      setKeywordInput("");
+      alert("Keyword has been added!");
     }
 
-    if (calorieInput && calorieInput.value) {
+    if (calorieInput) {
       setFilters((prevFilters) => ({
         ...prevFilters,
-        calories: [...prevFilters.calories, calorieInput.value],
+        calories: [...prevFilters.calories, calorieInput],
       }));
-      calorieInput.value = "";
-      alert("Input has been added!");
+      setCalorieInput("");
+      alert("Calories filter has been added!");
     }
   };
 
@@ -84,9 +83,10 @@ const FilterDisplay = ({ currentFilter }) => {
         return (
           <div className="input-row">
             <input
-              id="keyword-search"
+              value={keywordInput}
+              onChange={(e) => setKeywordInput(e.target.value)}
               type="text"
-              placeholder="halloumi and coffee"
+              placeholder="Coffee and Halloumi"
             />
             <p className="add-bttn" onClick={addSearch}>
               <IoIosAdd color="white" />
@@ -122,7 +122,8 @@ const FilterDisplay = ({ currentFilter }) => {
         return (
           <div className="calorie-filter">
             <input
-              id="calorie-input"
+              value={calorieInput}
+              onChange={(e) => setCalorieInput(e.target.value)}
               name="calorie-input"
               type="number"
               placeholder="Calories"
@@ -185,6 +186,16 @@ const FilterDisplay = ({ currentFilter }) => {
     }
   };
 
+  const removeSearch = (filter, category) => {
+    setFilters((prevFilters) => {
+      const categoryFilters = prevFilters[category] || [];
+      return {
+        ...prevFilters,
+        [category]: categoryFilters.filter((item) => item !== filter),
+      };
+    });
+  };
+
   return (
     <div className="d-flex flex-column w-100" id="main-top-container">
       <div className="filter-display-container d-flex flex-column align-items-center w-100">
@@ -195,7 +206,13 @@ const FilterDisplay = ({ currentFilter }) => {
         <div id="selected-filters">
           {Object.keys(filters).map((category) =>
             filters[category].map((filter, index) => (
-              <span key={index}>{filter}, </span>
+              <span
+                id="user-word"
+                key={index}
+                onClick={() => removeSearch(filter, category)}
+              >
+                {filter}{" "}
+              </span>
             ))
           )}
         </div>

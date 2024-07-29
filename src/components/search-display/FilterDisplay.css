@@ -11,6 +11,18 @@ body {
   border-radius: 0.5em;
 }
 
+#user-word {
+  color: aliceblue;
+  background-color: rgb(71, 69, 69);
+  border-radius: 0.5em;
+  padding: 0.2em 1em;
+}
+
+#user-word:hover {
+  cursor: pointer;
+  background-color: red;
+}
+
 .filter-display-container {
   padding: 20px;
   text-align: center;
