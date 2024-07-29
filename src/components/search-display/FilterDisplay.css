@@ -1,5 +1,6 @@
 body {
   overflow-x: hidden;
+  overflow-y: auto;
 }
 
 #input-row {
@@ -152,7 +153,7 @@ body {
   gap: 1.5em;
   width: 100%;
   padding: 20px;
-  overflow-y: auto;
+  overflow-y: scroll;
   max-height: 80vh;
 }
 
