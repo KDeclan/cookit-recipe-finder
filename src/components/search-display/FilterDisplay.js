@@ -22,6 +22,12 @@ const FilterDisplay = ({ currentFilter }) => {
   const [keywordInput, setKeywordInput] = useState("");
   const [calorieInput, setCalorieInput] = useState("");
 
+  const [visibleSections, setVisibleSections] = useState({
+    section1: true,
+    section2: true,
+    section3: true,
+  });
+
   useEffect(() => {
     const savedCookbook = localStorage.getItem("cookbook");
     if (savedCookbook) {
@@ -84,6 +90,18 @@ const FilterDisplay = ({ currentFilter }) => {
           : [...categoryFilters, filter],
       };
     });
+  };
+
+  const handleLineClick = (section) => {
+    setVisibleSections((prev) => ({
+      ...prev,
+      [section]: !prev[section],
+    }));
+  };
+
+  const getSectionClass = (section) => {
+    const isVisible = visibleSections[section];
+    return isVisible ? "section visible" : "section hidden";
   };
 
   const renderFilters = (filterList, category) => (

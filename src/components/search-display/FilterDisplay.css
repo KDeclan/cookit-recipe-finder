@@ -30,7 +30,7 @@ body {
   height: 23%;
   padding-top: 1em;
   overflow-y: auto;
-  border-bottom: 0.1em solid black;
+  border-bottom: 0.1em solid blue;
 }
 
 .input-row {
@@ -127,7 +127,7 @@ body {
   height: 19%;
   padding-top: 0.2em;
   overflow-y: auto;
-  border-bottom: 0.1em solid black;
+  border-bottom: 0.1em solid blue;
 }
 
 #selected-filters {
