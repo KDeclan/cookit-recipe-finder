@@ -8,6 +8,8 @@ import {
 } from "react-icons/io";
 import { fetchRecipes } from "../../services/api";
 
+//replace section border-borrom with break line and have them collapsable (collapse section for clarity)
+
 const FilterDisplay = ({ currentFilter }) => {
   const [filters, setFilters] = useState({
     keyword: [],
