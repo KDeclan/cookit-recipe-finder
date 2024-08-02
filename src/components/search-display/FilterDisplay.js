@@ -8,8 +8,6 @@ import {
 } from "react-icons/io";
 import { fetchRecipes } from "../../services/api";
 
-//replace section border-borrom with break line and have them collapsable (collapse section for clarity)
-
 const FilterDisplay = ({ currentFilter }) => {
   const [filters, setFilters] = useState({
     keyword: [],
@@ -23,9 +21,7 @@ const FilterDisplay = ({ currentFilter }) => {
   const [cookbook, setCookbook] = useState([]);
   const [keywordInput, setKeywordInput] = useState("");
   const [calorieInput, setCalorieInput] = useState("");
-
   const [visibleSections, setVisibleSections] = useState({
-    section1: true,
     section2: true,
     section3: true,
   });
@@ -36,6 +32,17 @@ const FilterDisplay = ({ currentFilter }) => {
       setCookbook(JSON.parse(savedCookbook));
     }
   }, []);
+
+  const handleLineClick = (section) => {
+    setVisibleSections((prev) => ({
+      ...prev,
+      [section]: !prev[section],
+    }));
+  };
+
+  const getSectionClass = (section) => {
+    return visibleSections[section] ? "section visible" : "section hidden";
+  };
 
   const addSearch = () => {
     if (keywordInput) {
@@ -94,18 +101,6 @@ const FilterDisplay = ({ currentFilter }) => {
     });
   };
 
-  const handleLineClick = (section) => {
-    setVisibleSections((prev) => ({
-      ...prev,
-      [section]: !prev[section],
-    }));
-  };
-
-  const getSectionClass = (section) => {
-    const isVisible = visibleSections[section];
-    return isVisible ? "section visible" : "section hidden";
-  };
-
   const renderFilters = (filterList, category) => (
     <div className="filters">
       {filterList.map((filter, index) => (
@@ -131,6 +126,7 @@ const FilterDisplay = ({ currentFilter }) => {
         return (
           <div className="input-row">
             <input
+              className="custom-input"
               value={keywordInput}
               onChange={(e) => setKeywordInput(e.target.value)}
               type="text"
@@ -183,20 +179,18 @@ const FilterDisplay = ({ currentFilter }) => {
           </div>
         );
       case "CookBook":
-        //when a recipe is added to the cookbook it will appear here
-        //todo: save to localStorage so saved recipes persist
         return (
           <div className="cookbook-display">
             {cookbook.map((recipe, index) => (
-              <div key={index} className="recipe">
-                <p id="recipe-label">{recipe.label}</p>
+              <div key={index} className="cookbook-recipe">
+                <p id="cookbook-recipe-label">{recipe.label}</p>
                 <img
                   src={recipe.image}
                   alt={recipe.label}
-                  height={150}
-                  width={125}
+                  height={55}
+                  width={55}
                 />
-                <div className="recipe-stats">
+                <div className="cookbook-recipe-stats">
                   <p>
                     <strong>Cal</strong> {recipe.calories.toFixed(2)}
                   </p>
@@ -253,11 +247,20 @@ const FilterDisplay = ({ currentFilter }) => {
 
   return (
     <div className="d-flex flex-column w-100" id="main-top-container">
-      <div className="filter-display-container d-flex flex-column align-items-center w-100">
+      <div className="filter-display-container d-flex flex-column align-items-center w-100 section section1">
         <h2>{currentFilter}</h2>
         {filterInput()}
+        <div
+          className="line"
+          id="line1"
+          onClick={() => handleLineClick("section2")}
+        ></div>
       </div>
-      <div className="search-display-container d-flex flex-column justify-content-between w-100">
+      <div
+        className={`search-display-container d-flex flex-column justify-content-between w-100 ${getSectionClass(
+          "section2"
+        )}`}
+      >
         <div id="selected-filters">
           {Object.keys(filters).map((category) =>
             filters[category].map((filter, index) => (
@@ -271,54 +274,71 @@ const FilterDisplay = ({ currentFilter }) => {
             ))
           )}
         </div>
-        <div className="search-bttn" onClick={handleSearch}>
+        <div
+          className={`search-bttn ${visibleSections.section2 ? "" : "hidden"}`}
+          onClick={handleSearch}
+        >
           <IoIosSearch color="white" />
         </div>
+        <div
+          className="line"
+          id="line2"
+          onClick={() => handleLineClick("section3")}
+        ></div>
       </div>
-      <div className="recipes-display">
-        {recipes && recipes.length > 0 ? (
-          recipes.map((hit, index) => (
-            <div key={index} className="recipe">
-              <p id="recipe-label">{hit.recipe.label}</p>
-              <img
-                src={hit.recipe.image}
-                alt={hit.recipe.label}
-                height={150}
-                width={125}
-              />
-              <div className="recipe-stats">
-                <p>
-                  <strong>Cal</strong> {hit.recipe.calories.toFixed(2)}
-                </p>
-                <p>
-                  <strong>Fat</strong>{" "}
-                  {hit.recipe.totalNutrients.FAT.quantity.toFixed(2)}
-                </p>
-                <p>
-                  <strong>Pro</strong>{" "}
-                  {hit.recipe.totalNutrients.PROCNT.quantity.toFixed(2)}
-                </p>
-                <p>
-                  <strong>Carb</strong>{" "}
-                  {hit.recipe.totalNutrients.CHOCDF.quantity.toFixed(2)}
+      <div className={`recipes-display ${getSectionClass("section3")}`}>
+        <div
+          className={`section-content ${
+            visibleSections.section3 ? "" : "hidden"
+          }`}
+        >
+          {recipes && recipes.length > 0 ? (
+            recipes.map((hit, index) => (
+              <div key={index} className="recipe">
+                <p id="recipe-label">{hit.recipe.label}</p>
+                <img
+                  src={hit.recipe.image}
+                  alt={hit.recipe.label}
+                  height={150}
+                  width={125}
+                />
+                <div className="recipe-stats">
+                  <p>
+                    <strong>Cal</strong> {hit.recipe.calories.toFixed(2)}
+                  </p>
+                  <p>
+                    <strong>Fat</strong>{" "}
+                    {hit.recipe.totalNutrients.FAT.quantity.toFixed(2)}
+                  </p>
+                  <p>
+                    <strong>Pro</strong>{" "}
+                    {hit.recipe.totalNutrients.PROCNT.quantity.toFixed(2)}
+                  </p>
+                  <p>
+                    <strong>Carb</strong>{" "}
+                    {hit.recipe.totalNutrients.CHOCDF.quantity.toFixed(2)}
+                  </p>
+                </div>
+                <a
+                  href={hit.recipe.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View Recipe
+                </a>
+                <p
+                  id="cookbook-add-bttn"
+                  onClick={() => addCookBook(hit.recipe)}
+                >
+                  <IoIosAdd color="white" />
+                  Add to cookbook
                 </p>
               </div>
-              <a
-                href={hit.recipe.url}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                View Recipe
-              </a>
-              <p id="cookbook-add-bttn" onClick={() => addCookBook(hit.recipe)}>
-                <IoIosAdd color="white" />
-                Add to cookbook
-              </p>
-            </div>
-          ))
-        ) : (
-          <p>No recipes found</p>
-        )}
+            ))
+          ) : (
+            <p id="no-recipe">No recipes found</p>
+          )}
+        </div>
       </div>
     </div>
   );
