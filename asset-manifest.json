@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/cookit-recipe-finder/static/css/main.92733948.css",
-    "main.js": "/cookit-recipe-finder/static/js/main.228f2db2.js",
+    "main.css": "/cookit-recipe-finder/static/css/main.46e108f8.css",
+    "main.js": "/cookit-recipe-finder/static/js/main.436271b1.js",
     "index.html": "/cookit-recipe-finder/index.html",
-    "main.92733948.css.map": "/cookit-recipe-finder/static/css/main.92733948.css.map",
-    "main.228f2db2.js.map": "/cookit-recipe-finder/static/js/main.228f2db2.js.map"
+    "main.46e108f8.css.map": "/cookit-recipe-finder/static/css/main.46e108f8.css.map",
+    "main.436271b1.js.map": "/cookit-recipe-finder/static/js/main.436271b1.js.map"
   },
   "entrypoints": [
-    "static/css/main.92733948.css",
-    "static/js/main.228f2db2.js"
+    "static/css/main.46e108f8.css",
+    "static/js/main.436271b1.js"
   ]
 }
