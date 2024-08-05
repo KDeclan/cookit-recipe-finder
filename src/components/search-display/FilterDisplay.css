@@ -3,6 +3,10 @@ body {
   height: 100vh;
 }
 
+#main-top-container {
+  background-color: var(--background-color);
+}
+
 .section {
   transition: height 0.5s ease, flex 0.5s ease;
 }
@@ -54,7 +58,7 @@ body {
 
 .custom-input:focus {
   outline: none;
-  border: 2px solid #e67854;
+  border: 2px solid var(--accent-color);
 }
 
 #user-word {
@@ -73,7 +77,6 @@ body {
   padding: 0.5em;
   text-align: center;
   overflow-y: auto;
-  max-height: 25vh;
 }
 
 .input-row {
@@ -87,14 +90,14 @@ body {
 
 .add-bttn {
   margin-top: 1.2em;
-  background-color: #e67854;
+  background-color: var(--accent-color);
   border-radius: 0.5em;
   padding: 0.2em;
 }
 
 #cookbook-add-bttn {
   margin-top: 1.2em;
-  background-color: green;
+  background-color: var(--accent-color2);
   border-radius: 0.5em;
   padding: 0 0.5em;
   color: aliceblue;
@@ -140,7 +143,7 @@ body {
   flex: 1 0 20%;
   box-sizing: border-box;
   text-align: center;
-  background-color: #e67854;
+  background-color: var(--accent-color);
   color: aliceblue;
   border-radius: 0.5em;
   position: relative;
@@ -169,13 +172,12 @@ body {
   padding: 1em;
   text-align: center;
   overflow-x: auto;
-  max-height: 12em;
+  max-height: 10em;
   gap: 1em;
 }
 
 #selected-filters {
   display: flex;
-  height: 80%;
   align-items: center;
   justify-content: center;
   overflow-x: auto;
@@ -183,7 +185,7 @@ body {
 }
 
 .search-bttn {
-  background-color: green;
+  background-color: var(--accent-color2);
   border-radius: 0.5em;
   width: 15%;
   margin: auto auto;
@@ -212,9 +214,6 @@ body {
   display: flex;
   width: 100%;
   gap: 1em;
-  padding: 1em;
-  align-items: center;
-  justify-content: center;
   overflow-x: auto;
 }
 
@@ -223,11 +222,11 @@ body {
   flex-direction: column;
   align-items: center;
   width: 12.7em;
-  height: 10em;
+  height: 15em;
   padding: 1em;
   border-radius: 0.5em;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  background-color: #ece4e4;
+  background-color: var(--card-color);
   text-align: center;
 }
 
@@ -237,7 +236,7 @@ body {
 }
 
 .cookbook-recipe a {
-  color: #e67854;
+  color: var(--accent-color);
   text-decoration: none;
   font-size: 0.95rem;
 }
@@ -246,10 +245,20 @@ body {
   display: flex;
   flex-direction: row;
   gap: 0.3em;
+  color: var(--text-color);
 }
 
 #cookbook-recipe-label {
   font-size: 0.85rem;
+  color: var(--text-color);
+}
+
+#cookbook-x {
+  color: var(--cookbook-x);
+}
+
+#cookbook-x:hover {
+  color: red;
 }
 
 .recipe {
@@ -261,7 +270,7 @@ body {
   padding: 1em;
   border-radius: 0.5em;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  background-color: #ece4e4;
+  background-color: var(--card-color);
   text-align: center;
 }
 
@@ -277,7 +286,7 @@ body {
 }
 
 .recipe a {
-  color: #e67854;
+  color: var(--accent-color);
   text-decoration: none;
 }
 
@@ -285,12 +294,18 @@ body {
   display: flex;
   flex-direction: row;
   gap: 0.3em;
+  color: var(--text-color);
 }
 
 #recipe-label {
   font-size: 1rem;
+  color: var(--text-color);
 }
 
 #no-recipe {
   align-self: center;
+}
+
+.text-color-to-change {
+  color: var(--text-color);
 }

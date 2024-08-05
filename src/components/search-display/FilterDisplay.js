@@ -7,8 +7,11 @@ import {
   IoIosCloseCircle,
 } from "react-icons/io";
 import { fetchRecipes } from "../../services/api";
+import { useTheme } from "../../ThemeContext";
 
 const FilterDisplay = ({ currentFilter }) => {
+  const { theme } = useTheme();
+
   const [filters, setFilters] = useState({
     keyword: [],
     allergies: [],
@@ -214,7 +217,7 @@ const FilterDisplay = ({ currentFilter }) => {
                   id="remove-cookbook"
                   onClick={() => removeCookBook(recipe)}
                 >
-                  <IoIosCloseCircle />
+                  <IoIosCloseCircle id="cookbook-x" />
                 </div>
               </div>
             ))}
@@ -246,9 +249,12 @@ const FilterDisplay = ({ currentFilter }) => {
   };
 
   return (
-    <div className="d-flex flex-column w-100" id="main-top-container">
+    <div
+      className={`d-flex flex-column w-100 ${theme}`}
+      id="main-top-container"
+    >
       <div className="filter-display-container d-flex flex-column align-items-center w-100 section section1">
-        <h2>{currentFilter}</h2>
+        <h2 className="text-color-to-change">{currentFilter}</h2>
         {filterInput()}
         <div
           className="line"
@@ -336,7 +342,9 @@ const FilterDisplay = ({ currentFilter }) => {
               </div>
             ))
           ) : (
-            <p id="no-recipe">No recipes found</p>
+            <p className="text-color-to-change" id="no-recipe">
+              No recipes found
+            </p>
           )}
         </div>
       </div>

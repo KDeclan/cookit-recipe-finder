@@ -1,11 +1,14 @@
 import React from "react";
 import "./FilterSection.css";
-import { IoIosArrowForward } from "react-icons/io";
+import { IoIosArrowForward, IoIosMoon, IoIosSunny } from "react-icons/io";
+import { useTheme } from "../../ThemeContext";
 
 const FilterSection = ({ onFilterChange }) => {
+  const { theme, toggleTheme } = useTheme();
+
   return (
     <div
-      className="container d-flex flex-column align-items-center justify-content-evenly vh-100"
+      className={`container d-flex flex-column align-items-center justify-content-evenly vh-100 ${theme}`}
       id="top-container"
     >
       <h1 id="sidebar-header">Filters</h1>
@@ -31,6 +34,13 @@ const FilterSection = ({ onFilterChange }) => {
         CookBook
         <IoIosArrowForward />
       </h3>
+      <div id="color-button" onClick={toggleTheme}>
+        {theme === "light" ? (
+          <IoIosMoon size={"3em"} />
+        ) : (
+          <IoIosSunny size={"3em"} />
+        )}
+      </div>
     </div>
   );
 };

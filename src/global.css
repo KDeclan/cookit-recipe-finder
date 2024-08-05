@@ -1,0 +1,38 @@
+:root {
+  --main-bg-color: #ffffff;
+  --sidebar-color: #ffffff;
+  --accent-color: #e67854;
+  --accent-color2: green;
+  --border-color: #000000;
+  --thumb-color: #888;
+  --text-color: #000000;
+  --slider-bg-color: #ccc;
+  --card-color: #ece4e4;
+  --cookbook-x: #000000;
+}
+
+[data-theme="light"] {
+  --background-color: #ffffff;
+  --text-color: #000000;
+  --border-color: #000000;
+  --sidebar-color: #ffffff;
+  --accent-color: #e67854;
+  --accent-color2: green;
+  --slider-thumb-color: #888;
+  --slider-bg-color: #ccc;
+  --card-color: #ece4e4;
+  --cookbook-x: #000000;
+}
+
+[data-theme="dark"] {
+  --background-color: #141313;
+  --text-color: #ecdede;
+  --border-color: #3f3d3d;
+  --sidebar-color: #242323;
+  --accent-color: #ff74b9;
+  --accent-color2: rgb(118, 27, 146); /* change */
+  --slider-thumb-color: #302e2e;
+  --slider-bg-color: #3f3d3d;
+  --card-color: #2b2921;
+  --cookbook-x: aliceblue;
+}

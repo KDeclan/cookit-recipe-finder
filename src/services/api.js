@@ -6,7 +6,6 @@ const API_BASE_URL = "https://api.edamam.com/api/recipes/v2";
 const APP_ID = "793bad84";
 const APP_KEY = "9304b7d6461919559a354b2172f34c09";
 
-// Function to build the query string
 const buildQueryString = (filters) => {
   let queryString = `${API_BASE_URL}?type=public&app_id=${APP_ID}&app_key=${APP_KEY}`;
 
@@ -37,7 +36,7 @@ const buildQueryString = (filters) => {
       const nutrientKey = `nutrients[${nutrient
         .toLowerCase()
         .replace(/ /g, "")}]`;
-      queryString += `&${nutrientKey}=0-100`; // Adjust the range as needed
+      queryString += `&${nutrientKey}=0-100`;
     });
   }
 
@@ -46,15 +45,13 @@ const buildQueryString = (filters) => {
   return queryString;
 };
 
-// Initialize axios with retry functionality
 const axiosInstance = axios.create();
 axiosRetry(axiosInstance, {
   retries: 3,
   retryDelay: axiosRetry.exponentialDelay,
 });
 
-// Function to fetch recipes
-const limit = pLimit(5); // Limit to 5 concurrent requests
+const limit = pLimit(5);
 
 export const fetchRecipes = async (filters) => {
   const queryString = buildQueryString(filters);

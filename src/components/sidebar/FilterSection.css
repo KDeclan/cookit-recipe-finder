@@ -1,15 +1,21 @@
 #top-container {
   text-wrap: nowrap;
-  border-right: 0.1em solid black;
+  border-right: 0.1em solid var(--border-color);
+  background-color: var(--sidebar-color);
+  color: var(--text-color);
 }
 
 #sidebar-header {
   margin-top: 0.3em;
 }
 
+#color-button:hover {
+  cursor: pointer;
+}
+
 .sidebar-bttns:hover {
   cursor: pointer;
-  background-color: white;
+  background-color: var(--background-color);
   width: 107%;
   text-align: center;
   border-radius: 0.5em;
