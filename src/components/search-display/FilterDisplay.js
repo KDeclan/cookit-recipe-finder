@@ -190,8 +190,7 @@ const FilterDisplay = ({ currentFilter }) => {
                 <img
                   src={recipe.image}
                   alt={recipe.label}
-                  height={55}
-                  width={55}
+                  className="cookbook-recipe-image"
                 />
                 <div className="cookbook-recipe-stats">
                   <p>

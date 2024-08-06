@@ -4,9 +4,7 @@
   --accent-color: #e67854;
   --accent-color2: green;
   --border-color: #000000;
-  --thumb-color: #888;
   --text-color: #000000;
-  --slider-bg-color: #ccc;
   --card-color: #ece4e4;
   --cookbook-x: #000000;
 }
@@ -18,8 +16,6 @@
   --sidebar-color: #ffffff;
   --accent-color: #e67854;
   --accent-color2: green;
-  --slider-thumb-color: #888;
-  --slider-bg-color: #ccc;
   --card-color: #ece4e4;
   --cookbook-x: #000000;
 }
@@ -30,9 +26,7 @@
   --border-color: #3f3d3d;
   --sidebar-color: #242323;
   --accent-color: #ff74b9;
-  --accent-color2: rgb(118, 27, 146); /* change */
-  --slider-thumb-color: #302e2e;
-  --slider-bg-color: #3f3d3d;
-  --card-color: #2b2921;
+  --accent-color2: rgb(216, 133, 78);
+  --card-color: #805e53;
   --cookbook-x: aliceblue;
 }

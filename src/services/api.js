@@ -2,9 +2,9 @@ import axios from "axios";
 import axiosRetry from "axios-retry";
 import pLimit from "p-limit";
 
-const API_BASE_URL = "https://api.edamam.com/api/recipes/v2";
-const APP_ID = "793bad84";
-const APP_KEY = "9304b7d6461919559a354b2172f34c09";
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+const APP_ID = process.env.REACT_APP_APP_ID;
+const APP_KEY = process.env.REACT_APP_APP_KEY;
 
 const buildQueryString = (filters) => {
   let queryString = `${API_BASE_URL}?type=public&app_id=${APP_ID}&app_key=${APP_KEY}`;
